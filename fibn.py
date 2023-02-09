@@ -20,5 +20,5 @@ def Main():
 		f = open("fibonacci.txt", "a")
 		f.write(str(result)+'\n')
 
-if __name__ == '_main_':
+if __name__ == '__main__':
 	Main()
