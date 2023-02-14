@@ -5,7 +5,7 @@ def fib(n):
 	for i in range(n):
 		a, b = b, a+b
 	return a
-
+	
 def Main():
 	parser = argparse.ArgumentParser()
 	group = parser.add_mutually_exclusive_group()
@@ -13,6 +13,7 @@ def Main():
 	group.add_argument("-q", "--quiet", action="store_true")
 	parser.add_argument("num", help="The fibonacci number you wish to calculate.", type=int)
 	parser.add_argument("-o", "--output", help="Output result to a file.", action="store_true")
+	parser.add_argument('filename', type=argparse.FileType('r'))
 
 	args = parser.parse_args()
 
@@ -27,6 +28,10 @@ def Main():
 	if args.output:
 		f = open("fibonacci.txt", "a")
 		f.write(str(result)+'\n')
+		
+	for file in args.filename:
+		print(file.strip())
 
+	
 if __name__ == '__main__':
 	Main()
